@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../data/projects";
-import { FaGithub, FaLink } from "react-icons/fa";
+import { FaGithub, FaLink, FaYoutube } from "react-icons/fa";
 import { FiExternalLink, FiStar, FiActivity, FiArrowUpRight, FiCode } from "react-icons/fi";
 
 const tabs = [
@@ -164,6 +164,12 @@ const ProjectCard = ({ project, index, featured = false }) => {
                  className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/50 hover:text-white transition-all">
                 <FaGithub size={14} />
               </a>
+              {project.youtube && (
+                <a href={project.youtube} target="_blank" rel="noopener noreferrer"
+                   className="w-8 h-8 rounded-full bg-white/5 hover:bg-red-600/80 flex items-center justify-center text-white/50 hover:text-white transition-all">
+                  <FaYoutube size={15} />
+                </a>
+              )}
               {project.demo && project.demo !== project.code && (
                 <a href={project.demo} target="_blank" rel="noopener noreferrer"
                    className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/50 hover:text-white transition-all"

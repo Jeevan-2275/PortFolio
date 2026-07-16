@@ -1,3 +1,5 @@
+const YT_CHANNEL = "https://youtube.com/@jeevankadam-xc7gs?si=Gqi-QvaVpWsRqtA2";
+
 export const projects = [
   {
     title: "Noble's Bid - MERN Auction Platform",
@@ -7,6 +9,7 @@ export const projects = [
     tech: ["React.js", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "JWT", "REST APIs"],
     code: "https://github.com/Jeevan-2275/noble_bids",
     demo: "https://noblebids2275.netlify.app",
+    youtube: YT_CHANNEL,
     metrics: { Performance: "98%", ActiveBids: "500+", Latency: "< 50ms" }
   },
   {
@@ -17,6 +20,7 @@ export const projects = [
     tech: ["Next.js", "React.js", "Tailwind CSS", "Inngest", "OpenAI API", "PostgreSQL"],
     code: "https://github.com/Jeevan-2275/Growwise",
     demo: "https://stock-market-2275.vercel.app/sign-in",
+    youtube: YT_CHANNEL,
     metrics: { ChartLatency: "< 30ms", Accuracy: "96.4%", PageLoad: "0.4s" }
   },
   {
@@ -27,6 +31,7 @@ export const projects = [
     tech: ["React.js", "CSS3", "JavaScript", "HTML5", "Workspace Tools", "Open Source"],
     code: "https://github.com/codinggita/focus_fuze",
     demo: "https://github.com/codinggita/focus_fuze",
+    youtube: YT_CHANNEL,
     metrics: { SearchLatency: "< 10ms", UXSatisfaction: "High", Contributions: "6 commits" }
   },
   {
@@ -37,6 +42,7 @@ export const projects = [
     tech: ["Next.js", "Node.js", "Express.js", "Video Processing", "AI Sentiment", "Cloudinary"],
     code: "https://github.com/Jeevan-2275",
     demo: "https://github.com/Jeevan-2275",
+    youtube: YT_CHANNEL,
     metrics: { AIAccuracy: "92%", VideoProcTime: "1.5s", FeedbackLoop: "Real-time" }
   },
   {
@@ -47,6 +53,7 @@ export const projects = [
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Kanban Scheduling"],
     code: "https://github.com/Jeevan-2275",
     demo: "https://github.com/Jeevan-2275",
+    youtube: YT_CHANNEL,
     metrics: { TicketResolution: "-40% time", ActiveTechs: "150+", Efficiency: "+25%" }
   },
   {
@@ -57,6 +64,7 @@ export const projects = [
     tech: ["React.js", "Node.js", "Express.js", "OpenAI API", "Tailwind CSS"],
     code: "https://github.com/Jeevan-2275",
     demo: "https://github.com/Jeevan-2275",
+    youtube: YT_CHANNEL,
     metrics: { MatchAccuracy: "94%", GenerationTime: "1.2s", ResumeScans: "1.2k+" }
   },
   {
@@ -67,6 +75,7 @@ export const projects = [
     tech: ["React Native", "Expo Go", "TypeScript", "Android SDK", "AsyncStorage"],
     code: "https://github.com/Jeevan-2275/cyber-dash",
     demo: "https://github.com/Jeevan-2275/cyber-dash",
+    youtube: YT_CHANNEL,
     metrics: { FrameRate: "60 FPS", LoadTime: "< 0.8s", GPUOptimized: "True" }
   },
   {
@@ -77,6 +86,7 @@ export const projects = [
     tech: ["Arduino Uno", "IoT Sensors", "C++ / Arduino IDE", "Servo Motor Control"],
     code: "https://github.com/Jeevan-2275",
     demo: "https://github.com/Jeevan-2275",
+    youtube: YT_CHANNEL,
     metrics: { ResponseTime: "< 0.2s", SensorPrecision: "High", ServoSpeed: "Auto" }
   },
   {
@@ -87,6 +97,7 @@ export const projects = [
     tech: ["Figma UI/UX", "Interactive Prototyping", "User flows", "Wireframing"],
     code: "https://figma.com",
     demo: "https://figma.com",
+    youtube: YT_CHANNEL,
     metrics: { ScreenCount: "18", PrototypeSteps: "25+", Engagement: "+45%" }
   }
 ];
