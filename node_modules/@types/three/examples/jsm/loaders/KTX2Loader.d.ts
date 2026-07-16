@@ -35,6 +35,9 @@ export class KTX2Loader extends Loader<CompressedTexture> {
      */
     setWorkerLimit(limit: number): this;
 
+    /**
+     * "detectSupportAsync()" has been deprecated. Use "detectSupport()" and "await renderer.init();" when creating the renderer.
+     */
     detectSupportAsync(renderer: Renderer): Promise<this>;
 
     /**
@@ -51,5 +54,5 @@ export class KTX2Loader extends Loader<CompressedTexture> {
     /**
      * Disposes the loader object, de-allocating any Web Workers created.
      */
-    dispose(): this;
+    dispose(): void;
 }

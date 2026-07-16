@@ -22,8 +22,8 @@
   --border-subtle: rgba(255,255,255,0.06);
   --border-glow: rgba(124, 58, 237, 0.25);
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  --text-secondary: #a8b8cc;
+  --text-muted: #64748b;
 }
 
 @layer base {
@@ -165,8 +165,8 @@
 }
 
 .neon-glass:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 60px -15px rgba(124, 58, 237, 0.4), 0 0 0 1px rgba(124,58,237,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px -12px rgba(124, 58, 237, 0.25), 0 0 0 1px rgba(124,58,237,0.1);
 }
 
 /* ============================================

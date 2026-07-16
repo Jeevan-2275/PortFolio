@@ -1,7 +1,6 @@
 import { Light } from "../../lights/Light.js";
 import Node from "../core/Node.js";
 import { NodeBuilder } from "../Nodes.js";
-import { ShaderNodeObject } from "../tsl/TSLCore.js";
 import LightingNode from "./LightingNode.js";
 
 export interface DirectLightData {
@@ -19,13 +18,13 @@ export interface DirectRectAreaLightData {
 }
 
 declare class LightsNode extends Node {
-    totalDiffuseNode: Node;
-    totalSpecularNode: Node;
-    outgoingLightNode: Node;
+    totalDiffuseNode: Node<"vec3">;
+    totalSpecularNode: Node<"vec3">;
+    outgoingLightNode: Node<"vec3">;
 
     constructor();
 
-    setupLightsNode(builder: NodeBuilder): void;
+    setupLightsNode(builder: NodeBuilder): LightingNode[];
 
     setupDirectLight(builder: NodeBuilder, lightNode: Node, lightData: DirectLightData): void;
 
@@ -44,4 +43,4 @@ declare class LightsNode extends Node {
 
 export default LightsNode;
 
-export const lights: (lights?: Light[]) => ShaderNodeObject<LightsNode>;
+export const lights: (lights?: Light[]) => LightsNode;

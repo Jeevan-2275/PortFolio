@@ -88,7 +88,7 @@ const topStats = [
   { value: "30+", label: "Technologies" },
   { value: "5", label: "Core Domains" },
   { value: "3+", label: "Yrs Learning" },
-  { value: "100%", label: "Passion" },
+  { value: "20+", label: "GitHub Repos" },
 ];
 
 /* ─── SKILL CHIP ─────────────────────────────────────── */
@@ -297,7 +297,7 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <div className="section-label mx-auto w-fit mb-5">⚙️ Technical Arsenal</div>
+          <div className="section-label mx-auto w-fit mb-5">Technical Arsenal</div>
           <h1 className="text-4xl md:text-6xl font-extrabold font-display text-white leading-tight mb-4">
             Skills &amp;{" "}
             <span
@@ -311,8 +311,8 @@ const Skills = () => {
               Technologies
             </span>
           </h1>
-          <p className="text-white/40 max-w-lg mx-auto text-sm leading-relaxed">
-            A curated map of my technical toolkit. Hover any card to interact. Hover any skill to see it glow.
+          <p className="text-white/65 max-w-lg mx-auto text-sm leading-relaxed">
+            A curated map of my technical toolkit — spanning languages, frameworks, databases, AI tooling, and cloud infrastructure.
           </p>
           <div className="section-divider" />
         </motion.div>
@@ -433,8 +433,8 @@ const Skills = () => {
               ))}
             </div>
           </div>
-          <p className="text-xs font-mono-tech text-white/25 sm:ml-auto sm:text-right">
-            // Always learning
+          <p className="text-xs font-mono-tech text-white/40 sm:ml-auto sm:text-right">
+            Always learning
           </p>
         </motion.div>
 

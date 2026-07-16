@@ -1,7 +1,7 @@
 import ContextNode from "../core/ContextNode.js";
 import LightingModel, { LightingModelReflectedLight } from "../core/LightingModel.js";
 import Node from "../core/Node.js";
-import { ShaderNodeObject } from "../tsl/TSLCore.js";
+import LightingNode from "./LightingNode.js";
 import LightsNode from "./LightsNode.js";
 
 export interface LightingContext {
@@ -10,18 +10,21 @@ export interface LightingContext {
     iblIrradiance: Node;
     ambientOcclusion: Node;
     reflectedLight: LightingModelReflectedLight;
+    materialLightings: LightingNode[];
     backdrop: Node;
     backdropAlpha: Node;
 }
 
-export default class LightingContextNode extends ContextNode {
-    lightingModelNode: LightingModel | null;
+export default class LightingContextNode extends ContextNode<unknown> {
+    lightingModel: LightingModel | null;
+    materialLightings: LightingNode[];
     backdropNode: Node | null;
     backdropAlphaNode: Node | null;
 
     constructor(
         lightsNode: LightsNode,
         lightingModel?: LightingModel | null,
+        materialLightings?: LightingNode[],
         backdropNode?: Node | null,
         backdropAlphaNode?: Node | null,
     );
@@ -31,5 +34,8 @@ export default class LightingContextNode extends ContextNode {
 
 export const lightingContext: (
     node: LightsNode,
-    lightingModelNode?: LightingModel,
-) => ShaderNodeObject<LightingContextNode>;
+    lightingModel?: LightingModel | null,
+    materialLightings?: LightingNode[],
+    backdropNode?: Node | null,
+    backdropAlphaNode?: Node | null,
+) => LightingContextNode;

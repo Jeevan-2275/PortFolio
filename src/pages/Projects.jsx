@@ -174,7 +174,7 @@ const ProjectCard = ({ project, index, featured = false }) => {
             </div>
           </div>
 
-          <p className="text-sm text-white/40 leading-relaxed mb-6 flex-1">
+          <p className="text-sm text-white/65 leading-relaxed mb-6 flex-1">
             {project.description}
           </p>
 
@@ -213,13 +213,13 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <div className="flex items-center gap-2 text-violet-400 font-mono-tech text-sm mb-4">
-            <FiCode /> <span>// WORK & EXPERIMENTS</span>
+          <div className="section-label mb-4">
+            Work &amp; Experiments
           </div>
           <h1 className="text-4xl md:text-6xl font-bold font-display text-white mb-6 tracking-tight">
             Engineering <span className="text-white/30 italic">Showcase.</span>
           </h1>
-          <p className="text-white/40 max-w-2xl text-base leading-relaxed">
+          <p className="text-white/65 max-w-2xl text-base leading-relaxed">
             A collection of production-grade applications, AI agents, and system architectures. Built with a focus on performance, scalability, and exceptional user experience.
           </p>
         </motion.div>

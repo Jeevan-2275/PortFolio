@@ -140,7 +140,7 @@ const ContactUs = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <div className="section-label mx-auto w-fit mb-6">✉️ Let's Talk</div>
+          <div className="section-label mx-auto w-fit mb-6">Let's Talk</div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display leading-tight mb-5">
             Let's build something{" "}
             <span
@@ -154,7 +154,7 @@ const ContactUs = () => {
               extraordinary
             </span>
           </h1>
-          <p className="max-w-2xl mx-auto text-white/45 text-base leading-relaxed">
+          <p className="max-w-2xl mx-auto text-white/65 text-base leading-relaxed">
             Open to full-time roles, freelance projects, and technical collaborations.
             If you have an interesting challenge, let's talk about it.
           </p>

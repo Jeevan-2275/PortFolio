@@ -22,7 +22,7 @@ const stats = [
   { value: "20+", label: "Projects\nDeployed" },
   { value: "30+", label: "Technologies\nMastered" },
   { value: "8.70", label: "University\nCGPA" },
-  { value: "100%", label: "Lint-Clean\nCodebases" },
+  { value: "3+", label: "Years\nCoding" },
 ];
 
 const techIcons = [
@@ -111,12 +111,6 @@ const Home = () => {
     { text: "{ }", x: "88%", y: "12%", delay: 0.6, color: "#f472b6" },
     { text: "=>", x: "75%", y: "78%", delay: 1.2, color: "#06b6d4" },
     { text: "async", x: "5%", y: "72%", delay: 0.3, color: "#f59e0b" },
-    { text: "AI", x: "92%", y: "50%", delay: 0.9, color: "#c084fc" },
-    { text: "[ ]", x: "15%", y: "88%", delay: 1.5, color: "#34d399" },
-    { text: "API", x: "50%", y: "5%", delay: 0.5, color: "#fb923c" },
-    { text: "npm", x: "60%", y: "92%", delay: 1.8, color: "#818cf8" },
-    { text: "git", x: "30%", y: "8%", delay: 2.1, color: "#f472b6" },
-    { text: "//", x: "82%", y: "32%", delay: 0.2, color: "#7c3aed" },
   ];
 
   return (
@@ -170,16 +164,6 @@ const Home = () => {
           }}
         />
 
-        {/* Horizontal scan line animation */}
-        <motion.div
-          className="absolute left-0 right-0 h-px pointer-events-none z-[1]"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(124,58,237,0.4), rgba(219,39,119,0.3), transparent)",
-          }}
-          animate={{ top: ["0%", "100%", "0%"] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-        />
 
         <div className="relative z-10 w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -236,8 +220,8 @@ const Home = () => {
               {/* Bio */}
               <motion.p
                 variants={itemVariants}
-                className="text-base text-white/48 leading-relaxed mb-9 max-w-lg"
-                style={{ color: "rgba(255,255,255,0.48)" }}
+                className="text-base leading-relaxed mb-9 max-w-lg"
+                style={{ color: "rgba(255,255,255,0.65)" }}
               >
                 B.Tech Computer Engineering student at Rai University, Ahmedabad —
                 building production-grade full-stack apps, AI pipelines, and cloud
@@ -293,7 +277,7 @@ const Home = () => {
                   </motion.a>
                 ))}
                 <div className="w-px h-5 bg-white/10" />
-                <span className="text-xs font-mono-tech text-white/25">Ahmedabad, India 🇮🇳</span>
+                <span className="text-xs font-mono-tech text-white/45">Ahmedabad, India 🇮🇳</span>
               </motion.div>
             </motion.div>
 
@@ -607,7 +591,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="section-header"
           >
-            <div className="section-label">⚡ What I Build</div>
+            <div className="section-label">What I Build</div>
             <h2 className="text-3xl md:text-4xl font-bold font-display text-white">
               Core Engineering Domains
             </h2>
@@ -639,7 +623,7 @@ const Home = () => {
                   <h3 className="text-lg font-semibold font-display text-white mb-2">
                     {f.title}
                   </h3>
-                  <p className="text-sm text-white/45 leading-relaxed">{f.desc}</p>
+                  <p className="text-sm text-white/65 leading-relaxed">{f.desc}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mt-auto pt-2 border-t border-white/[0.05]">
