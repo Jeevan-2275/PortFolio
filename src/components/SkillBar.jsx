@@ -1,7 +1,10 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PropTypes from "prop-types";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SkillBar = ({ title, percentage }) => {
   const barRef = useRef();

@@ -1,265 +1,299 @@
 import React from "react";
 import { motion } from "framer-motion";
-import aboutUsImage from "../assets/about-us-image.png"; // Ensure this matches your portfolio's illustration style
+import {
+  FiUser, FiBookOpen, FiTarget, FiHeart, FiCode, FiZap,
+} from "react-icons/fi";
+import { FaGraduationCap, FaTrophy } from "react-icons/fa";
+import aboutUsImage from "../assets/about-us-image.png";
 
-// Interactive Background Component
-const InteractiveBackground = () => {
-  return (
-    <div className="fixed inset-0 z-0 overflow-hidden bg-gradient-to-br from-blue-100 to-white">
-      <motion.div
-        className="absolute w-32 h-32 bg-blue-300 rounded-full opacity-20 blur-sm"
-        animate={{
-          y: [0, -40, 0],
-          x: [0, 40, 0],
-          rotate: 360,
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{ top: "15%", left: "15%" }}
-      />
-      <motion.div
-        className="absolute w-24 h-24 bg-blue-400 rounded-lg opacity-20 blur-sm"
-        animate={{
-          y: [0, 30, 0],
-          x: [-40, 0, 40],
-          rotate: -360,
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{ bottom: "20%", right: "20%" }}
-      />
-      <motion.div
-        className="absolute w-40 h-40 bg-blue-500 rounded-full opacity-10 blur-sm"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: 180,
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-      />
-    </div>
-  );
-};
+const milestones = [
+  {
+    year: "2022",
+    title: "Secondary Education (10th Grade)",
+    detail: "Passed SSC with 82%, building a strong foundation in core sciences and analytical thinking.",
+    icon: <FaGraduationCap />,
+    color: "#10b981",
+  },
+  {
+    year: "2024",
+    title: "Higher Secondary Education (12th Grade)",
+    detail: "Passed HSC (Science Stream) with 70%, focusing on Mathematics and Computer Science.",
+    icon: <FaGraduationCap />,
+    color: "#0ea5e9",
+  },
+  {
+    year: "2024",
+    title: "Started B.Tech at Rai University",
+    detail: "Enrolled in Computer Engineering. Began competitive programming and full-stack development.",
+    icon: <FaGraduationCap />,
+    color: "#7c3aed",
+  },
+  {
+    year: "2024",
+    title: "First Production App — Noble's Bid",
+    detail: "Launched a real-time MERN auction platform with JWT auth, live bidding, and 500+ active bids.",
+    icon: <FiCode />,
+    color: "#0284c7",
+  },
+  {
+    year: "2025",
+    title: "Built Growwise — FinTech + AI",
+    detail: "Integrated OpenAI API and Inngest workflows into a live market analytics SaaS on Vercel.",
+    icon: <FiZap />,
+    color: "#db2777",
+  },
+  {
+    year: "2025",
+    title: "Agentic AI & Cloud Systems",
+    detail: "Deep-dived into LangChain, RAG pipelines, Docker, and AWS infrastructure for production AI systems.",
+    icon: <FaTrophy />,
+    color: "#f59e0b",
+  },
+];
 
-const AboutUs = () => {
-  return (
-    <div className="min-h-screen bg-blue-100 text-gray-800 relative">
-      {/* Interactive Background */}
-      <InteractiveBackground />
+const values = [
+  {
+    icon: <FiCode size={18} />,
+    color: "#7c3aed",
+    title: "Clean Code",
+    desc: "Lint-approved, well-structured code that speaks for itself. No hacks, no shortcuts.",
+  },
+  {
+    icon: <FiZap size={18} />,
+    color: "#db2777",
+    title: "Ship Fast",
+    desc: "Bias toward action. Build an MVP, validate it, then iterate with data-driven improvements.",
+  },
+  {
+    icon: <FiTarget size={18} />,
+    color: "#f59e0b",
+    title: "Impact First",
+    desc: "Every feature, every system — built to deliver measurable, real-world impact at scale.",
+  },
+  {
+    icon: <FiHeart size={18} />,
+    color: "#10b981",
+    title: "User Obsessed",
+    desc: "User experience is non-negotiable. Beautiful interfaces that feel fast and intuitive.",
+  },
+];
 
-      {/* Main Content */}
-      <main className="relative z-10 container mx-auto px-4 py-16 text-center">
-        {/* Header Section */}
+const AboutUs = () => (
+  <div className="min-h-screen py-32 px-6 relative">
+    <div className="max-w-6xl mx-auto">
+
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="section-header"
+      >
+        <div className="section-label">👤 Identity</div>
+        <h1 className="text-4xl md:text-5xl font-bold font-display text-white">
+          About Me
+        </h1>
+        <div className="section-divider" />
+      </motion.div>
+
+      {/* ── BIO SPLIT ─────────────────────────────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 items-center">
+
+        {/* Photo */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="mb-12"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-4 flex justify-center"
         >
-          <motion.h1
-            initial={{ y: -30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-5xl font-bold text-blue-900 mb-4"
-          >
-            About Me
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg text-blue-700 italic mb-6"
-          >
-          </motion.p>
-          <motion.img
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(0, 0, 255, 0.5)" }}
-            src={aboutUsImage}
-            alt="About Me illustration"
-            className="w-48 h-48 mx-auto mb-6 rounded-full object-cover shadow-md border-4 border-blue-300"
-          />
-        </motion.div>
-
-        {/* About Me Content */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {/* Bio Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 0.4 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">👤</span> Bio
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              I am Jeevan Kadam, a first-year B.Tech student at Rai University, Ahmedabad, with a passion for technology. My journey is driven by curiosity and a desire to craft innovative solutions. I enjoy tackling real-world challenges through coding and have excelled in multiple hackathons.
-            </p>
-          </motion.div>
-
-          {/* Technical Expertise Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 0.5 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">🔧</span> Technical Expertise
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "HTML/CSS",
-                "JavaScript",
-                "React",
-                "Node.js",
-                "MongoDB",
-                "Express.js",
-                "REST APIs",
-                "Git",
-                "Tailwind CSS",
-                "Github",
-                
-              ].map((skill, index) => (
-                <span
-                  key={index}
-                  className="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition duration-300 cursor-pointer"
-                >
-                  {skill}
-                </span>
-              ))}
+          <div className="relative">
+            {/* Animated glow ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute -inset-3 rounded-2xl opacity-50"
+              style={{
+                background: "conic-gradient(from 0deg, #7c3aed, #db2777, #f59e0b, #06b6d4, #7c3aed)",
+                filter: "blur(10px)",
+                borderRadius: "20px",
+              }}
+            />
+            <div className="relative w-52 h-52 md:w-60 md:h-60 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0d0d1a]">
+              <img
+                src={aboutUsImage}
+                alt="Jeevan Kadam"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80";
+                }}
+              />
+              {/* Availability overlay */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
+                <div className="badge-available text-[10px] px-3 py-1 whitespace-nowrap">
+                  <span className="dot" />
+                  Open to Work
+                </div>
+              </div>
             </div>
-          </motion.div>
-
-          {/* University Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 0.6 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">🎓</span> University
-            </h3>
-            <p className="text-gray-700">Rai University, Ahmedabad</p>
-            <p className="text-blue-900 mt-2 font-medium">CGPA: 8.90</p>
-          </motion.div>
-
-          {/* Tech Stack Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 0.7 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">/</span> Tech Stack
-            </h3>
-            <p className="text-gray-700">Mastery of 10+ Technologies</p>
-          </motion.div>
-
-          {/* Goal Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 0.8 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">🎯</span> Goal
-            </h3>
-           
-          <p className="text-gray-700">Full Stack Developer</p>
-          <p className="text-gray-700">Web Developer</p>
-
-          </motion.div>
-
-          {/* Goals & Aspirations Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 0.9 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">🌟</span> Goals & Aspirations
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-            "My goal is to become a dynamic full-stack developer who builds impactful and scalable web solutions for real-world challenges. I'm passionate about mastering advanced algorithms, cloud computing, and modern frameworks, while actively contributing to open-source projects and pushing the boundaries of innovation."            </p>
-          </motion.div>
-
-          {/* Learning Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 1.0 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">📖</span> Learning
-            </h3>
-            <p className="text-gray-700">Building RESTful APIs with Node.js & Express</p>
-          </motion.div>
-
-          {/* Progress Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 1.1 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">📊</span> Progress
-            </h3>
-            <p className="text-gray-700">Completed 5+ Projects</p>
-          </motion.div>
-
-          {/* Fun Facts Card */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 6px 20px rgba(0, 0, 255, 0.3)" }}
-            transition={{ delay: 1.2 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4 flex items-center">
-              <span className="mr-2">☕</span> Fun Facts
-            </h3>
-            <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li>Curious by nature and driven by innovation, I thrive on learning new technologies and solving complex problems.</li>
-              <li> I enjoy collaborating in hackathons, creating unique projects, and contributing to the open-source community</li>
-              <li> Beyond tech, I dive into books on psychology and philosophy to better understand people and perspectives.</li>
-              <li>Passionate about contributing to open-source software.</li>
-            </ul>
-          </motion.div>
+          </div>
         </motion.div>
-      </main>
+
+        {/* Bio text */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-8 flex flex-col gap-5"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold font-display text-white">
+            Hi, I'm{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg, #a78bfa, #f472b6)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              Jeevan Kadam
+            </span>
+          </h2>
+          <p className="text-white/55 leading-relaxed text-sm md:text-base">
+            A passionate Computer Engineering student at Rai University, Ahmedabad. I build
+            production-grade full-stack applications, AI-powered platforms, and cloud-native
+            architectures — all with a relentless focus on performance, clean code, and user experience.
+          </p>
+          <p className="text-white/45 leading-relaxed text-sm">
+            I thrive in challenging environments where I can architect robust systems, push the
+            boundaries of technology, and collaborate with driven teams to ship software that
+            actually matters. Whether it's a real-time auction platform, an AI career coach,
+            or a FinTech analytics SaaS — I build to impress and to last.
+          </p>
+
+          {/* Stat chips */}
+          <div className="flex flex-wrap gap-3 mt-2">
+            {[
+              { label: "CGPA", value: "8.70 / 10.0", color: "#7c3aed" },
+              { label: "Graduation", value: "2028 (B.Tech CSE)", color: "#0ea5e9" },
+              { label: "Location", value: "Ahmedabad, India 🇮🇳", color: "#10b981" },
+            ].map((s) => (
+              <div
+                key={s.label}
+                className="px-4 py-2.5 rounded-xl border flex flex-col"
+                style={{
+                  background: `${s.color}10`,
+                  borderColor: `${s.color}25`,
+                }}
+              >
+                <span className="text-[10px] font-mono-tech text-white/30 uppercase tracking-widest">{s.label}</span>
+                <span className="text-xs font-semibold font-display text-white mt-0.5">{s.value}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ── MILESTONE TIMELINE ────────────────────────── */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="mb-16"
+      >
+        <h2 className="text-2xl font-bold font-display text-white mb-10 text-center">
+          Journey So Far
+        </h2>
+        <div className="relative max-w-2xl mx-auto">
+          {/* Vertical line */}
+          <div className="timeline-line" />
+
+          <div className="space-y-8 pl-16">
+            {milestones.map((m, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12, duration: 0.6 }}
+                className="relative"
+              >
+                {/* Dot */}
+                <div
+                  className="timeline-dot absolute -left-[52px] top-0"
+                  style={{
+                    borderColor: `${m.color}60`,
+                    color: m.color,
+                    fontSize: "14px",
+                  }}
+                >
+                  {m.icon}
+                </div>
+
+                {/* Card */}
+                <div className="neon-glass p-5 hover:border-white/[0.1] transition-all">
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="text-base font-semibold font-display text-white leading-snug">
+                      {m.title}
+                    </h3>
+                    <span
+                      className="text-[10px] font-mono-tech font-bold px-2.5 py-1 rounded-lg flex-shrink-0"
+                      style={{
+                        background: `${m.color}15`,
+                        color: m.color,
+                        border: `1px solid ${m.color}30`,
+                      }}
+                    >
+                      {m.year}
+                    </span>
+                  </div>
+                  <p className="text-xs text-white/40 leading-relaxed">{m.detail}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ── VALUES ────────────────────────────────────── */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <h2 className="text-2xl font-bold font-display text-white mb-8 text-center">
+          Engineering Philosophy
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {values.map((v, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="neon-glass p-5 flex flex-col gap-3"
+            >
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center"
+                style={{
+                  background: `${v.color}15`,
+                  border: `1px solid ${v.color}30`,
+                  color: v.color,
+                }}
+              >
+                {v.icon}
+              </div>
+              <h3 className="text-sm font-bold font-display text-white">{v.title}</h3>
+              <p className="text-xs text-white/40 leading-relaxed">{v.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
     </div>
-  );
-};
+  </div>
+);
 
 export default AboutUs;
