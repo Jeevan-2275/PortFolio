@@ -66,73 +66,6 @@ const features = [
   },
 ];
 
-/* ── Interactive photo-side elements ─────────────────────────────── */
-const TechBadge = ({ icon, name, color, delay, side }) => {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: side === "right" ? 24 : -24 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ x: side === "right" ? -6 : 6, scale: 1.14 }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      title={name}
-      className="w-11 h-11 rounded-xl flex items-center justify-center text-xl cursor-default relative"
-      style={{
-        background: hovered ? `${color}18` : "rgba(8,8,20,0.88)",
-        border: `1px solid ${hovered ? color + "55" : "rgba(255,255,255,0.07)"}`,
-        backdropFilter: "blur(14px)",
-        boxShadow: hovered ? `0 0 22px -4px ${color}80` : "none",
-        color: hovered ? color : "rgba(255,255,255,0.4)",
-        transition: "background 0.22s, border-color 0.22s, box-shadow 0.22s, color 0.22s",
-      }}
-    >
-      {icon}
-      {hovered && (
-        <span
-          className="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono-tech px-2 py-0.5 rounded-md whitespace-nowrap pointer-events-none"
-          style={{ background: `${color}22`, border: `1px solid ${color}40`, color }}
-        >
-          {name}
-        </span>
-      )}
-    </motion.div>
-  );
-};
-
-const StatChip = ({ value, label, color, delay }) => {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -24 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ x: 6, scale: 1.05 }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      className="flex flex-col items-center px-3 py-2.5 rounded-xl cursor-default min-w-[62px]"
-      style={{
-        background: hovered ? `${color}14` : "rgba(8,8,20,0.88)",
-        border: `1px solid ${hovered ? color + "45" : "rgba(255,255,255,0.06)"}`,
-        backdropFilter: "blur(14px)",
-        boxShadow: hovered ? `0 0 22px -6px ${color}80` : "none",
-        transition: "all 0.22s ease",
-      }}
-    >
-      <span
-        className="text-lg font-extrabold font-display leading-none"
-        style={{ color: hovered ? color : "#fff", transition: "color 0.22s" }}
-      >
-        {value}
-      </span>
-      <span className="text-[9px] font-mono-tech text-white/35 uppercase tracking-widest mt-1 text-center leading-tight">
-        {label}
-      </span>
-    </motion.div>
-  );
-};
-
 const containerVariants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.11 } },
@@ -368,14 +301,6 @@ const Home = () => {
                 />
               </div>
 
-              {/* LEFT side — stat chips */}
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 flex-col gap-3 z-20 hidden lg:flex">
-                <StatChip value="20+"  label="Projects"   color="#7c3aed" delay={0.5} />
-                <StatChip value="8.70" label="CGPA"       color="#db2777" delay={0.6} />
-                <StatChip value="30+"  label="Tech Stack" color="#f59e0b" delay={0.7} />
-                <StatChip value="3+"   label="Yrs Coding" color="#06b6d4" delay={0.8} />
-              </div>
-
               {/* Photo with clean gradient ring */}
               <motion.div
                 className="relative z-10"
@@ -384,13 +309,13 @@ const Home = () => {
               >
                 <div
                   style={{
-                    padding: "2px",
+                    padding: "3px",
                     borderRadius: "50%",
                     background: "linear-gradient(135deg, rgba(124,58,237,0.85), rgba(219,39,119,0.55) 50%, rgba(6,182,212,0.4))",
                   }}
                 >
-                  <div style={{ padding: "4px", borderRadius: "50%", background: "#06060f" }}>
-                    <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden">
+                  <div style={{ padding: "5px", borderRadius: "50%", background: "#06060f" }}>
+                    <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden">
                       <img
                         src={profileImage}
                         alt="Jeevan Kadam — Full-Stack Engineer"
@@ -404,14 +329,6 @@ const Home = () => {
                   </div>
                 </div>
               </motion.div>
-
-              {/* RIGHT side — tech icon badges */}
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 flex-col gap-3 z-20 hidden lg:flex">
-                <TechBadge icon={<SiReact />}      name="React"      color="#61DAFB" delay={0.5} side="right" />
-                <TechBadge icon={<SiNodedotjs />}  name="Node.js"    color="#68A063" delay={0.6} side="right" />
-                <TechBadge icon={<SiNextdotjs />}  name="Next.js"    color="#ffffff" delay={0.7} side="right" />
-                <TechBadge icon={<SiTypescript />} name="TypeScript" color="#3178C6" delay={0.8} side="right" />
-              </div>
 
             </motion.div>
 
