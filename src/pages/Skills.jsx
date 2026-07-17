@@ -1,5 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useState, useRef } from "react";
+import { certifications } from "../data/certifications";
+import CertificationCard from "../components/CertificationCard";
 import {
   SiJavascript, SiTypescript, SiCplusplus, SiHtml5, SiCss3,
   SiReact, SiNextdotjs, SiTailwindcss, SiRedux, SiExpo,
@@ -421,6 +423,32 @@ const Skills = () => {
           <p className="text-xs font-mono-tech text-white/40 sm:ml-auto sm:text-right">
             Always learning
           </p>
+        </motion.div>
+
+        {/* ── CERTIFICATIONS ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-20"
+        >
+          <div className="mb-10">
+            <div className="section-label mb-4">Verified Credentials</div>
+            <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-3">
+              Certifications &amp; <span className="italic text-white/30">Awards.</span>
+            </h2>
+            <p className="text-white/55 text-sm max-w-xl leading-relaxed">
+              Industry-recognised certifications from HackerRank, Simplilearn, Infosys, and government bodies — each verifiable via the credential link.
+            </p>
+            <div className="section-divider mt-6" style={{ margin: "24px 0 0" }} />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certifications.map((cert, i) => (
+              <CertificationCard key={i} cert={cert} index={i} />
+            ))}
+          </div>
         </motion.div>
 
       </div>
