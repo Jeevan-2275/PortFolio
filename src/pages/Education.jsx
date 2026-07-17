@@ -131,17 +131,24 @@ const Education = () => {
 
         {/* Certifications Section */}
         <div>
-          <motion.h3
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl font-bold text-white mb-8 flex items-center gap-2"
+            transition={{ duration: 0.6 }}
+            className="mb-10"
           >
-            <FaCertificate className="text-cyan-400" />
-            Certifications List
-          </motion.h3>
+            <div className="section-label mb-4">Credentials</div>
+            <h3 className="text-3xl font-bold font-display text-white mb-3">
+              Certifications &amp; <span className="italic text-white/30">Awards.</span>
+            </h3>
+            <p className="text-white/55 text-sm max-w-xl leading-relaxed">
+              Industry-verified certifications and recognition from leading platforms, organisations, and government bodies.
+            </p>
+            <div className="section-divider mt-6" style={{ margin: "24px 0 0" }} />
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {certifications.map((cert, index) => (
               <CertificationCard key={index} cert={cert} index={index} />
             ))}
