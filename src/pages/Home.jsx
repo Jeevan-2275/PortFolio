@@ -281,246 +281,54 @@ const Home = () => {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT: Interactive Profile Photo Zone */}
+            {/* RIGHT: Profile Photo */}
             <motion.div
-              initial={{ opacity: 0, x: 40, scale: 0.9 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
               className="relative flex justify-center items-center order-1 lg:order-2"
               style={{ height: "480px" }}
             >
-              {/* ── Deep ambient glow behind everything ── */}
+              {/* Ambient glow */}
               <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
                 <div
                   style={{
-                    width: "420px", height: "420px",
+                    width: "400px", height: "400px",
                     borderRadius: "50%",
-                    background: "radial-gradient(circle, rgba(124,58,237,0.25) 0%, rgba(219,39,119,0.1) 40%, transparent 70%)",
-                    filter: "blur(30px)",
-                    animation: "pulse-slow 5s ease-in-out infinite",
+                    background: "radial-gradient(circle, rgba(124,58,237,0.16) 0%, rgba(219,39,119,0.07) 50%, transparent 70%)",
+                    filter: "blur(48px)",
                   }}
                 />
               </div>
 
-              {/* ── Ripple pulse rings ── */}
-              {[1, 2, 3].map((n) => (
-                <motion.div
-                  key={n}
-                  className="absolute rounded-full pointer-events-none"
-                  style={{
-                    border: `1px solid rgba(124,58,237,${0.25 - n * 0.06})`,
-                    width: `${200 + n * 75}px`,
-                    height: `${200 + n * 75}px`,
-                  }}
-                  animate={{ scale: [1, 1.06, 1], opacity: [0.6, 0.2, 0.6] }}
-                  transition={{
-                    duration: 3 + n * 0.8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: n * 0.6,
-                  }}
-                />
-              ))}
-
-              {/* ── Orbit ring 1: INNER — fast, violet ── */}
+              {/* Photo with clean gradient ring */}
               <motion.div
-                className="absolute pointer-events-none"
-                style={{
-                  width: "300px", height: "300px",
-                  border: "1px dashed rgba(124,58,237,0.2)",
-                  borderRadius: "50%",
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              >
-                {[
-                  { icon: <SiReact style={{ color: "#61DAFB" }} />, angle: 0 },
-                  { icon: <SiNodedotjs style={{ color: "#68A063" }} />, angle: 180 },
-                ].map(({ icon, angle }) => (
-                  <motion.div
-                    key={angle}
-                    className="absolute w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow-lg"
-                    style={{
-                      background: "rgba(13,13,26,0.92)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      backdropFilter: "blur(10px)",
-                      top: "50%",
-                      left: "50%",
-                      transform: `rotate(${angle}deg) translateX(150px) rotate(-${angle}deg) translate(-50%, -50%)`,
-                    }}
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                  >
-                    {icon}
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* ── Orbit ring 2: MIDDLE — medium, pink ── */}
-              <motion.div
-                className="absolute pointer-events-none"
-                style={{
-                  width: "390px", height: "390px",
-                  border: "1px dashed rgba(219,39,119,0.18)",
-                  borderRadius: "50%",
-                }}
-                animate={{ rotate: -360 }}
-                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-              >
-                {[
-                  { icon: <SiNextdotjs style={{ color: "#fff" }} />, angle: 0 },
-                  { icon: <SiMongodb style={{ color: "#4DB33D" }} />, angle: 120 },
-                  { icon: <SiTypescript style={{ color: "#3178C6" }} />, angle: 240 },
-                ].map(({ icon, angle }) => (
-                  <motion.div
-                    key={angle}
-                    className="absolute w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow-lg"
-                    style={{
-                      background: "rgba(13,13,26,0.92)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      backdropFilter: "blur(10px)",
-                      top: "50%",
-                      left: "50%",
-                      transform: `rotate(${angle}deg) translateX(195px) rotate(-${angle}deg) translate(-50%, -50%)`,
-                    }}
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                  >
-                    {icon}
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* ── Orbit ring 3: OUTER — slow, gold/cyan ── */}
-              <motion.div
-                className="absolute pointer-events-none"
-                style={{
-                  width: "460px", height: "460px",
-                  border: "1px dashed rgba(245,158,11,0.15)",
-                  borderRadius: "50%",
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-              >
-                {[
-                  { icon: <SiDocker style={{ color: "#2496ED" }} />, angle: 30 },
-                  { icon: <SiTailwindcss style={{ color: "#38BDF8" }} />, angle: 150 },
-                  { icon: <SiPython style={{ color: "#3776AB" }} />, angle: 270 },
-                ].map(({ icon, angle }) => (
-                  <motion.div
-                    key={angle}
-                    className="absolute w-9 h-9 rounded-xl flex items-center justify-center text-lg shadow-lg"
-                    style={{
-                      background: "rgba(13,13,26,0.92)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      backdropFilter: "blur(10px)",
-                      top: "50%",
-                      left: "50%",
-                      transform: `rotate(${angle}deg) translateX(230px) rotate(-${angle}deg) translate(-50%, -50%)`,
-                    }}
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-                  >
-                    {icon}
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* ── Photo with conic glow ring ── */}
-              <motion.div
-                className="relative z-20 flex items-center justify-center"
-                whileHover={{ scale: 1.04 }}
+                className="relative z-10"
+                whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                {/* Spinning conic ring */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  className="absolute pointer-events-none"
+                <div
                   style={{
-                    inset: "-5px",
+                    padding: "2px",
                     borderRadius: "50%",
-                    background: "conic-gradient(from 0deg, #7c3aed, #db2777, #f59e0b, #06b6d4, #7c3aed)",
-                    filter: "blur(5px)",
-                    opacity: 0.85,
-                  }}
-                />
-                {/* Inner dark border gap */}
-                <div
-                  className="absolute pointer-events-none"
-                  style={{ inset: "-1px", borderRadius: "50%", background: "#06060f" }}
-                />
-
-                {/* Photo */}
-                <div
-                  className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-[3px] z-10"
-                  style={{ borderColor: "#0d0d1a", backgroundColor: "#0d0d1a" }}
-                >
-                  <img
-                    src={profileImage}
-                    alt="Jeevan Kadam — Full-Stack Engineer"
-                    className="w-full h-full object-cover object-top"
-                    onError={(e) => {
-                      e.target.src =
-                        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=80";
-                    }}
-                  />
-                  {/* Inner violet overlay */}
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background: "radial-gradient(circle at 30% 20%, rgba(124,58,237,0.15), transparent 65%)",
-                    }}
-                  />
-                </div>
-              </motion.div>
-
-              {/* ── Floating badges ── */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-8 right-2 z-30"
-              >
-                <div
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-mono-tech font-semibold shadow-xl"
-                  style={{
-                    background: "rgba(13,13,26,0.92)",
-                    border: "1px solid rgba(124,58,237,0.4)",
-                    backdropFilter: "blur(16px)",
-                    color: "#a78bfa",
-                    boxShadow: "0 0 20px rgba(124,58,237,0.2)",
+                    background: "linear-gradient(135deg, rgba(124,58,237,0.85), rgba(219,39,119,0.55) 50%, rgba(6,182,212,0.4))",
                   }}
                 >
-                  ⚡ Full-Stack Dev
+                  <div style={{ padding: "4px", borderRadius: "50%", background: "#06060f" }}>
+                    <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden">
+                      <img
+                        src={profileImage}
+                        alt="Jeevan Kadam — Full-Stack Engineer"
+                        className="w-full h-full object-cover object-top"
+                        onError={(e) => {
+                          e.target.src =
+                            "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=80";
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-10 -left-2 z-30"
-              >
-                <div
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-mono-tech font-semibold shadow-xl"
-                  style={{
-                    background: "rgba(13,13,26,0.92)",
-                    border: "1px solid rgba(219,39,119,0.4)",
-                    backdropFilter: "blur(16px)",
-                    color: "#f472b6",
-                    boxShadow: "0 0 20px rgba(219,39,119,0.2)",
-                  }}
-                >
-                  🤖 AI Builder
-                </div>
-              </motion.div>
-
-              {/* Open to work */}
-              <div className="absolute bottom-14 right-4 z-30">
-                <div className="badge-available text-[10px] px-2.5 py-1">
-                  <span className="dot" style={{ width: 6, height: 6 }} />
-                  Open to Work
-                </div>
-              </div>
             </motion.div>
 
           </div>

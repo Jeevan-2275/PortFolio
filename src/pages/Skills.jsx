@@ -8,12 +8,12 @@ import {
   SiDocker, SiAmazon, SiFigma, SiOpenai, SiPython, SiGraphql,
   SiMui, SiGit, SiRender,
 } from "react-icons/si";
-import { FiShield, FiServer, FiCpu, FiBox, FiLayers } from "react-icons/fi";
+import { FiShield, FiServer, FiCpu, FiBox, FiLayers, FiCode } from "react-icons/fi";
 
 /* ─── DATA ──────────────────────────────────────────── */
 const groups = [
   {
-    id: "languages", label: "Languages", emoji: "🖋️",
+    id: "languages", label: "Languages", icon: <FiCode />,
     accent: "#7c3aed", glow: "rgba(124,58,237,0.5)",
     span: "md:col-span-1",
     skills: [
@@ -26,7 +26,7 @@ const groups = [
     ],
   },
   {
-    id: "frontend", label: "Frontend", emoji: "🌐",
+    id: "frontend", label: "Frontend", icon: <FiLayers />,
     accent: "#06b6d4", glow: "rgba(6,182,212,0.5)",
     span: "md:col-span-1",
     skills: [
@@ -41,7 +41,7 @@ const groups = [
     ],
   },
   {
-    id: "backend", label: "Backend & Database", emoji: "⚙️",
+    id: "backend", label: "Backend & Database", icon: <FiServer />,
     accent: "#10b981", glow: "rgba(16,185,129,0.5)",
     span: "md:col-span-2",
     skills: [
@@ -55,7 +55,7 @@ const groups = [
     ],
   },
   {
-    id: "ai", label: "AI & Integration", emoji: "🤖",
+    id: "ai", label: "AI & Integration", icon: <FiCpu />,
     accent: "#db2777", glow: "rgba(219,39,119,0.5)",
     span: "md:col-span-1",
     skills: [
@@ -67,7 +67,7 @@ const groups = [
     ],
   },
   {
-    id: "devops", label: "Tools & Cloud", emoji: "☁️",
+    id: "devops", label: "Tools & Cloud", icon: <FiBox />,
     accent: "#f59e0b", glow: "rgba(245,158,11,0.5)",
     span: "md:col-span-1",
     skills: [
@@ -218,39 +218,25 @@ const TiltCard = ({ group, index }) => {
         {/* Content */}
         <div className="relative z-10 p-6 h-full flex flex-col gap-5">
           {/* Card header */}
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-3">
-              <motion.div
-                className="w-11 h-11 rounded-xl flex items-center justify-center text-xl"
-                style={{
-                  background: `${group.accent}15`,
-                  border: `1px solid ${group.accent}30`,
-                }}
-                whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
-                transition={{ duration: 0.4 }}
-              >
-                {group.emoji}
-              </motion.div>
-              <div>
-                <h2 className="text-base font-bold font-display text-white">{group.label}</h2>
-                <p
-                  className="text-[10px] font-mono-tech mt-0.5"
-                  style={{ color: group.accent }}
-                >
-                  {group.skills.length} technologies
-                </p>
-              </div>
+          <div className="flex items-center gap-3">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
+              style={{
+                background: `${group.accent}15`,
+                border: `1px solid ${group.accent}30`,
+                color: group.accent,
+              }}
+            >
+              {group.icon}
             </div>
-
-            {/* Glowing dot indicator */}
-            <div className="flex items-center gap-1.5 mt-1">
-              <motion.div
-                className="w-2 h-2 rounded-full"
-                style={{ background: group.accent }}
-                animate={{ opacity: [1, 0.3, 1], scale: [1, 0.8, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <span className="text-[9px] font-mono-tech text-white/30">active</span>
+            <div>
+              <h2 className="text-base font-bold font-display text-white">{group.label}</h2>
+              <p
+                className="text-[10px] font-mono-tech mt-0.5"
+                style={{ color: group.accent }}
+              >
+                {group.skills.length} technologies
+              </p>
             </div>
           </div>
 
@@ -363,7 +349,7 @@ const Skills = () => {
           transition={{ delay: 0.3, duration: 0.5 }}
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
-          {[{ id: "all", label: "All", emoji: "✦" }, ...groups.map(g => ({ id: g.id, label: g.label, emoji: g.emoji, accent: g.accent }))].map((tab) => {
+          {[{ id: "all", label: "All", accent: "#7c3aed" }, ...groups.map(g => ({ id: g.id, label: g.label, accent: g.accent }))].map((tab) => {
             const isActive = filter === tab.id;
             const accent = tab.accent || "#7c3aed";
             return (
@@ -372,7 +358,7 @@ const Skills = () => {
                 onClick={() => setFilter(tab.id)}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
-                className="px-4 py-2 rounded-xl text-[11px] font-mono-tech font-semibold border transition-all duration-250 flex items-center gap-1.5"
+                className="px-4 py-2 rounded-xl text-[11px] font-mono-tech font-semibold border transition-all duration-250"
                 style={{
                   color: isActive ? "#fff" : "rgba(255,255,255,0.35)",
                   borderColor: isActive ? `${accent}55` : "rgba(255,255,255,0.07)",
@@ -380,7 +366,6 @@ const Skills = () => {
                   boxShadow: isActive ? `0 0 24px -6px ${accent}` : "none",
                 }}
               >
-                <span>{tab.emoji}</span>
                 {tab.label}
               </motion.button>
             );

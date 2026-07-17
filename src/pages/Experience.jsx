@@ -52,7 +52,7 @@ const Experience = () => {
           <h2 className="text-4xl md:text-5xl font-bold font-display text-white mb-6">
             Professional <span className="italic text-white/30">Experience.</span>
           </h2>
-          <p className="text-white/65 font-mono-tech text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/65 text-sm max-w-2xl mx-auto leading-relaxed">
             {experience.description}
           </p>
           <div className="section-divider mt-10" />
