@@ -10,6 +10,7 @@ export const projects = [
     code: "https://github.com/Jeevan-2275/noble_bids",
     demo: "https://noblebids2275.netlify.app",
     youtube: YT_CHANNEL,
+    screenshot: "/projects/nobles-bid.png",
     metrics: { Performance: "98%", ActiveBids: "500+", Latency: "< 50ms" }
   },
   {

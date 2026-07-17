@@ -114,20 +114,27 @@ const ProjectCard = ({ project, index, featured = false }) => {
           
           {/* Faux browser mockup / wireframe */}
           <div className="absolute inset-x-8 -bottom-10 top-12 rounded-t-xl border border-white/10 bg-black/50 backdrop-blur-md overflow-hidden transform group-hover:translate-y-[-8px] transition-transform duration-500 shadow-2xl">
-            <div className="h-8 border-b border-white/5 bg-white/[0.02] flex items-center px-4 gap-1.5">
+            <div className="h-8 border-b border-white/5 bg-white/[0.02] flex items-center px-4 gap-1.5 flex-shrink-0">
               <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
               <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
               <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
             </div>
-            {/* Minimalist layout wireframe representation */}
-            <div className="p-5 flex flex-col gap-4 opacity-30">
-              <div className="w-1/3 h-4 rounded bg-white/20" />
-              <div className="flex gap-4">
-                <div className="w-2/3 h-24 rounded bg-white/10" />
-                <div className="w-1/3 h-24 rounded bg-white/5" />
+            {project.screenshot ? (
+              <img
+                src={project.screenshot}
+                alt={`${project.title} screenshot`}
+                className="w-full h-full object-cover object-top"
+              />
+            ) : (
+              <div className="p-5 flex flex-col gap-4 opacity-30">
+                <div className="w-1/3 h-4 rounded bg-white/20" />
+                <div className="flex gap-4">
+                  <div className="w-2/3 h-24 rounded bg-white/10" />
+                  <div className="w-1/3 h-24 rounded bg-white/5" />
+                </div>
+                <div className="w-full h-12 rounded bg-white/5" />
               </div>
-              <div className="w-full h-12 rounded bg-white/5" />
-            </div>
+            )}
           </div>
 
           {/* Badges */}
