@@ -123,7 +123,7 @@ const ProjectCard = ({ project, index, featured = false }) => {
               <img
                 src={project.screenshot}
                 alt={`${project.title} screenshot`}
-                className="w-full h-full object-cover object-top"
+                className={`w-full h-full ${project.screenshot.includes('cyberdash') ? 'object-contain bg-slate-950 p-2' : 'object-cover object-top'}`}
               />
             ) : (
               <div className="p-5 flex flex-col gap-4 opacity-30">
@@ -206,10 +206,17 @@ const ProjectCard = ({ project, index, featured = false }) => {
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filtered = projects.filter((p) => {
-    if (activeTab === "all") return true;
-    return getCategory(p.tech).includes(activeTab);
+    const matchesTab = activeTab === "all" || getCategory(p.tech).includes(activeTab);
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return matchesTab;
+    const matchesSearch =
+      p.title.toLowerCase().includes(q) ||
+      p.description.toLowerCase().includes(q) ||
+      p.tech.some((t) => t.toLowerCase().includes(q));
+    return matchesTab && matchesSearch;
   });
 
   const featured = filtered[0];
@@ -237,33 +244,58 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* --- FILTER TABS --- */}
+        {/* --- FILTER & SEARCH BAR --- */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex flex-wrap gap-2 mb-12 border-b border-white/[0.05] pb-6"
+          className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-12 border-b border-white/[0.05] pb-6"
         >
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-lg text-xs font-mono-tech transition-all duration-300 relative ${
-                activeTab === tab.id
-                  ? "text-white"
-                  : "text-white/40 hover:text-white/70"
-              }`}
-            >
-              {tab.label}
-              {activeTab === tab.id && (
-                <motion.div 
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-white/10 rounded-lg -z-10"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-            </button>
-          ))}
+          {/* Filter Pills */}
+          <div className="flex flex-wrap gap-2">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-2 rounded-lg text-xs font-mono-tech transition-all duration-300 relative ${
+                  activeTab === tab.id
+                    ? "text-white"
+                    : "text-white/40 hover:text-white/70"
+                }`}
+              >
+                {tab.label}
+                {activeTab === tab.id && (
+                  <motion.div 
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-white/10 rounded-lg -z-10"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Real-time Search Box */}
+          <div className="relative min-w-[240px] md:w-72">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search tech, title, or domain..."
+              className="w-full pl-9 pr-4 py-2 bg-white/[0.03] border border-white/10 rounded-xl text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-violet-500/50 focus:bg-white/[0.06] transition-all font-mono-tech"
+            />
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-xs pointer-events-none">
+              🔍
+            </span>
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white text-xs"
+              >
+                ✕
+              </button>
+            )}
+          </div>
         </motion.div>
 
         {/* --- GRID --- */}

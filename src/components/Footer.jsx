@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaYoutube } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const footerLinks = [
@@ -14,8 +15,10 @@ const footerLinks = [
 const socials = [
   { icon: <FaGithub />, href: "https://github.com/Jeevan-2275", label: "GitHub" },
   { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/jeevan-kadam-730b87327", label: "LinkedIn" },
+  { icon: <SiLeetcode />, href: "https://leetcode.com/u/Jeevan-2275/", label: "LeetCode" },
+  { icon: <FaYoutube />, href: "https://youtube.com/@jeevankadam-xc7gs?si=Gqi-QvaVpWsRqtA2", label: "YouTube" },
   { icon: <FaTwitter />, href: "https://x.com/JKadam33718", label: "Twitter" },
-  { icon: <FaEnvelope />, href: "mailto:jeevakadam2275@gmail.com", label: "Email" },
+  { icon: <FaEnvelope />, href: "mailto:jeevankadam2275@gmail.com", label: "Email" },
 ];
 
 const Footer = () => (

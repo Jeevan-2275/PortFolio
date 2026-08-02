@@ -8,49 +8,56 @@ const HeroCanvas = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: true });
 
-    // Resize handler
     const resize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
     resize();
-    window.addEventListener("resize", resize);
 
-    // Track mouse
+    let resizeTimeout;
+    const onResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resize, 100);
+    };
+    window.addEventListener("resize", onResize, { passive: true });
+
+    let mouseTimeout;
     const onMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      if (!mouseTimeout) {
+        mouseTimeout = setTimeout(() => {
+          const rect = canvas.getBoundingClientRect();
+          mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+          mouseTimeout = null;
+        }, 16);
+      }
     };
     const onMouseLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
-    canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("mouseleave", onMouseLeave);
+    canvas.addEventListener("mousemove", onMouseMove, { passive: true });
+    canvas.addEventListener("mouseleave", onMouseLeave, { passive: true });
 
-    // Particle colors matching the palette
     const palette = [
-      "rgba(124,58,237,",   // violet
-      "rgba(219,39,119,",   // pink
-      "rgba(6,182,212,",    // cyan
-      "rgba(245,158,11,",   // gold
-      "rgba(167,139,250,",  // light violet
+      "124, 58, 237",
+      "219, 39, 119",
+      "6, 182, 212",
+      "245, 158, 11",
+      "167, 139, 250",
     ];
 
-    // Create particles
-    const COUNT = 80;
+    const COUNT = 42; // Optimized count for 60fps performance
     const particles = Array.from({ length: COUNT }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 2 + 1,
-      color: palette[Math.floor(Math.random() * palette.length)],
-      opacity: Math.random() * 0.5 + 0.15,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      r: Math.random() * 1.5 + 1,
+      rgb: palette[Math.floor(Math.random() * palette.length)],
+      opacity: Math.random() * 0.4 + 0.15,
     }));
 
-    const CONNECT_DIST = 140;
-    const MOUSE_RADIUS = 120;
-    const MOUSE_FORCE = 60;
+    const CONNECT_DIST_SQ = 120 * 120;
+    const MOUSE_RADIUS = 100;
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -59,99 +66,77 @@ const HeroCanvas = () => {
       const my = mouseRef.current.y;
 
       // Update positions
-      particles.forEach((p) => {
-        // Mouse repulsion
+      for (let i = 0; i < COUNT; i++) {
+        const p = particles[i];
+        
         const dx = p.x - mx;
         const dy = p.y - my;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MOUSE_RADIUS) {
+        const distSq = dx * dx + dy * dy;
+        if (distSq < MOUSE_RADIUS * MOUSE_RADIUS) {
+          const dist = Math.sqrt(distSq);
           const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
-          p.x += (dx / dist) * force * 2;
-          p.y += (dy / dist) * force * 2;
+          p.x += (dx / (dist || 1)) * force * 1.5;
+          p.y += (dy / (dist || 1)) * force * 1.5;
         }
 
         p.x += p.vx;
         p.y += p.vy;
 
-        // Wrap edges
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
-      });
+      }
 
-      // Draw connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i];
+      // Batch line draw calls
+      for (let i = 0; i < COUNT; i++) {
+        const a = particles[i];
+        for (let j = i + 1; j < COUNT; j++) {
           const b = particles[j];
           const dx = a.x - b.x;
           const dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECT_DIST) {
-            const alpha = (1 - dist / CONNECT_DIST) * 0.18;
+          const distSq = dx * dx + dy * dy;
+
+          if (distSq < CONNECT_DIST_SQ) {
+            const dist = Math.sqrt(distSq);
+            const alpha = (1 - dist / 120) * 0.14;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `${a.color}${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(${a.rgb}, ${alpha})`;
+            ctx.lineWidth = 0.7;
             ctx.stroke();
           }
         }
       }
 
-      // Draw mouse connections
-      particles.forEach((p) => {
-        const dx = p.x - mx;
-        const dy = p.y - my;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MOUSE_FORCE * 2) {
-          const alpha = (1 - dist / (MOUSE_FORCE * 2)) * 0.5;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(mx, my);
-          ctx.strokeStyle = `rgba(124,58,237,${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      });
-
-      // Draw particles
-      particles.forEach((p) => {
-        // Glow
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-        gradient.addColorStop(0, `${p.color}${p.opacity})`);
-        gradient.addColorStop(1, `${p.color}0)`);
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-
-        // Core dot
+      // Draw particle dots
+      for (let i = 0; i < COUNT; i++) {
+        const p = particles[i];
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `${p.color}${p.opacity + 0.3})`;
+        ctx.fillStyle = `rgba(${p.rgb}, ${p.opacity})`;
         ctx.fill();
-      });
+      }
 
       animRef.current = requestAnimationFrame(draw);
     };
 
-    draw();
+    animRef.current = requestAnimationFrame(draw);
 
     return () => {
-      cancelAnimationFrame(animRef.current);
-      window.removeEventListener("resize", resize);
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+      window.removeEventListener("resize", onResize);
       canvas.removeEventListener("mousemove", onMouseMove);
       canvas.removeEventListener("mouseleave", onMouseLeave);
+      if (resizeTimeout) clearTimeout(resizeTimeout);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-auto"
-      style={{ opacity: 0.9 }}
+      className="absolute inset-0 w-full h-full pointer-events-auto transform-gpu"
     />
   );
 };

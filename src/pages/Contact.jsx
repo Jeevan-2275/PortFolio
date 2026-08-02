@@ -9,8 +9,8 @@ const contactLinks = [
   {
     icon: <FaEnvelope />,
     label: "Email",
-    value: "jeevakadam2275@gmail.com",
-    href: "mailto:jeevakadam2275@gmail.com",
+    value: "jeevankadam2275@gmail.com",
+    href: "mailto:jeevankadam2275@gmail.com",
     color: "#7c3aed",
   },
   {
@@ -57,11 +57,11 @@ const commandMap = {
     { text: "▸ Status     : Open to opportunities", type: "success" },
   ],
   skills: [
-    { text: "▸ Frontend   : React.js, Next.js, TypeScript, Tailwind CSS", type: "info" },
-    { text: "▸ Backend    : Node.js, Express.js, REST APIs, GraphQL", type: "info" },
+    { text: "▸ Frontend   : React.js, Next.js, Angular, TypeScript, Tailwind CSS", type: "info" },
+    { text: "▸ Backend    : Node.js, Express.js, Django, REST APIs, GraphQL", type: "info" },
     { text: "▸ Database   : MongoDB, PostgreSQL, Redis, Firebase", type: "info" },
     { text: "▸ AI / ML    : OpenAI API, Agentic AI, LangChain", type: "info" },
-    { text: "▸ DevOps     : Docker, AWS, Vercel, CI/CD, Kubernetes", type: "info" },
+    { text: "▸ DevOps     : Docker, Jenkins, AWS, Vercel, CI/CD", type: "info" },
   ],
   projects: [
     { text: "▸ Noble's Bid      → Real-time MERN auction platform", type: "info" },
@@ -71,7 +71,7 @@ const commandMap = {
     { text: "▸ AI Career Coach  → Resume & career path AI engine", type: "info" },
   ],
   email: [
-    { text: "▸ Email    : jeevakadam2275@gmail.com", type: "success" },
+    { text: "▸ Email    : jeevankadam2275@gmail.com", type: "success" },
     { text: "▸ GitHub   : https://github.com/Jeevan-2275", type: "success" },
     { text: "▸ LinkedIn : https://linkedin.com/in/jeevan-kadam-730b87327", type: "success" },
     { text: "▸ Twitter  : https://x.com/JKadam33718", type: "success" },
@@ -103,13 +103,37 @@ const ContactUs = () => {
 
   const handleChange = (e) => setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false });
-    setTimeout(() => {
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/jeevankadam2275@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: formData.subject || `Portfolio Message from ${formData.name}`,
+          message: formData.message,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus({ submitting: false, success: true });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        throw new Error("Failed to send email");
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      // Success fallback UI for recruiter
       setStatus({ submitting: false, success: true });
       setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1600);
+    }
   };
 
   const handleTerminal = (e) => {

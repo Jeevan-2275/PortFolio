@@ -4,7 +4,7 @@ import {
   FiUser, FiBookOpen, FiTarget, FiHeart, FiCode, FiZap,
 } from "react-icons/fi";
 import { FaGraduationCap, FaTrophy } from "react-icons/fa";
-import aboutUsImage from "../assets/about-us-image.png";
+import profileImage from "../assets/profile-image.png";
 
 const milestones = [
   {
@@ -106,30 +106,33 @@ const AboutUs = () => (
           transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-4 flex justify-center"
         >
-          <div className="relative">
-            {/* Animated glow ring */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-3 rounded-2xl opacity-50"
+          <div className="relative group">
+            {/* Ambient Dual-Glow Background Backdrop */}
+            <div
+              className="absolute -inset-4 rounded-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-500"
               style={{
-                background: "conic-gradient(from 0deg, #7c3aed, #db2777, #f59e0b, #06b6d4, #7c3aed)",
-                filter: "blur(10px)",
-                borderRadius: "20px",
+                background: "radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.45), rgba(6, 182, 212, 0.35) 60%, transparent 80%)",
+                filter: "blur(16px)",
               }}
             />
-            <div className="relative w-52 h-52 md:w-60 md:h-60 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0d0d1a]">
+
+            {/* Decorative Tech Border Ring */}
+            <div className="absolute -inset-1 rounded-2xl border border-violet-500/30 bg-gradient-to-r from-violet-600/20 via-pink-600/20 to-cyan-600/20 p-[1px] shadow-2xl" />
+
+            {/* Profile Photo Container */}
+            <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#121226] to-[#06060f] shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500">
+              <div className="absolute inset-0 grid-mesh opacity-20 pointer-events-none" />
               <img
-                src={aboutUsImage}
+                src={profileImage}
                 alt="Jeevan Kadam"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top relative z-10"
                 onError={(e) => {
                   e.target.src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80";
                 }}
               />
               {/* Availability overlay */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
-                <div className="badge-available text-[10px] px-3 py-1 whitespace-nowrap">
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20">
+                <div className="badge-available text-[10px] px-3 py-1 whitespace-nowrap shadow-lg backdrop-blur-md">
                   <span className="dot" />
                   Open to Work
                 </div>

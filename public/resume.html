@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeevan Kadam - Resume</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.35in 0.45in;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif, 'Inter', sans-serif;
+      color: #000000;
+      background-color: #ffffff;
+      line-height: 1.35;
+      font-size: 10pt;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 22pt;
+      font-weight: bold;
+      color: #000000;
+      margin-bottom: 4px;
+    }
+
+    .contact-line {
+      font-size: 9.5pt;
+      color: #000000;
+      word-spacing: 1px;
+    }
+
+    .contact-line a {
+      color: #0000ee;
+      text-decoration: underline;
+    }
+
+    /* SECTION */
+    .section {
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #000000;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 1px;
+      margin-bottom: 6px;
+    }
+
+    /* EXPERIENCE & PROJECTS ENTRIES */
+    .item {
+      margin-bottom: 7px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 10pt;
+    }
+
+    .item-title {
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .item-title a {
+      color: #0000ee;
+      text-decoration: underline;
+      font-weight: normal;
+    }
+
+    .item-date {
+      font-weight: bold;
+      color: #000000;
+      font-size: 9.5pt;
+    }
+
+    .item-sub {
+      font-style: italic;
+      font-size: 9.5pt;
+      color: #000000;
+      margin-bottom: 3px;
+    }
+
+    ul.bullets {
+      list-style-type: disc;
+      padding-left: 18px;
+      margin-top: 2px;
+    }
+
+    ul.bullets li {
+      font-size: 9.5pt;
+      margin-bottom: 2px;
+      color: #000000;
+    }
+
+    ul.bullets li strong {
+      font-weight: bold;
+    }
+
+    .tech-stack-line {
+      font-style: italic;
+      font-size: 9pt;
+      margin-left: 18px;
+      margin-top: 1px;
+    }
+
+    /* SKILLS SECTION */
+    .skills-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-list li {
+      font-size: 9.5pt;
+      margin-bottom: 3px;
+    }
+
+    .skills-list li strong {
+      font-weight: bold;
+    }
+
+    /* HACKATHON PARTICIPATION TABLE */
+    .hackathon-grid {
+      display: flex;
+      justify-content: flex-start;
+      gap: 80px;
+      font-size: 9.5pt;
+      margin-top: 3px;
+      padding-left: 10px;
+    }
+
+    .hackathon-grid a {
+      color: #0000ee;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .location-tag {
+      font-weight: bold;
+      font-size: 9pt;
+    }
+
+    @media print {
+      @page {
+        margin: 0.3in 0.4in;
+      }
+      body {
+        font-size: 9.5pt;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <h1>Jeevan Kadam</h1>
+    <div class="contact-line">
+      +91 8080853186 &nbsp;|&nbsp; 
+      <a href="mailto:jeevankadam2275@gmail.com">jeevankadam2275@gmail.com</a> &nbsp;|&nbsp; 
+      <a href="https://www.linkedin.com/in/jeevan-kadam-730b87327" target="_blank">Linkedin</a> &nbsp;|&nbsp; 
+      <a href="https://github.com/Jeevan-2275" target="_blank">Github</a> &nbsp;|&nbsp; 
+      <a href="https://jeevan-2275.github.io" target="_blank">Portfolio</a> &nbsp;|&nbsp; 
+      <a href="https://leetcode.com/u/Jeevan-2275/" target="_blank">LeetCode</a>
+    </div>
+  </header>
+
+  <!-- WORK EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Work Experience</div>
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">LearnHyve (Remote)</span>
+        <span class="item-date">Apr 2025 - Jun 2025</span>
+      </div>
+      <div class="item-sub">Frontend Intern</div>
+      <ul class="bullets">
+        <li>Developed responsive web pages using <strong>React.js and Tailwind CSS</strong>, ensuring cross-device compatibility.</li>
+        <li>Integrated <strong>RESTful APIs</strong> and implemented UI/UX improvements in <strong>Agile environment</strong> with daily stand-ups and code reviews.</li>
+        <li>Collaborated within an Agile environment by participating in daily stand-ups, sprint planning, and code reviews to ensure timely, high-quality deliverables.</li>
+        <li>Refactored codebase improving <strong>component reusability by 40%</strong>, enhancing maintainability using <strong>Git version control</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROJECT WORK -->
+  <div class="section">
+    <div class="section-title">Project Work</div>
+
+    <!-- Project 1 -->
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">
+          Laundry Management System &nbsp;
+          [ <a href="https://github.com/Jeevan-2275/Noble-s-Bid" target="_blank">Github</a> ] | 
+          [ <a href="https://nobles-bid.vercel.app" target="_blank">Live</a> ] | 
+          [ <a href="https://github.com/Jeevan-2275/Noble-s-Bid#readme" target="_blank">API Documentation</a> ] | 
+          [ <a href="https://youtube.com" target="_blank">Demo Video</a> ]
+        </span>
+        <span class="item-date">Feb 2025</span>
+      </div>
+      <ul class="bullets">
+        <li>Built <strong>role-based full-stack application</strong> with Admin, User, and Worker dashboards serving <strong>3+ user roles</strong>.</li>
+        <li>Implemented <strong>JWT authentication</strong> with password reset and integrated <strong>Fast2SMS API</strong>, reducing manual communication by <strong>80%</strong>.</li>
+        <li>Developed <strong>RESTful Express APIs with MongoDB</strong> for order management and created fully <strong>responsive UI</strong> with React.</li>
+      </ul>
+      <div class="tech-stack-line"><strong>TechStack</strong> = React js, MongoDB, Express, Nodejs, TailwindCSS.</div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">
+          AI Career Coach Platform &nbsp;
+          [ <a href="https://github.com/Jeevan-2275/Growwise" target="_blank">Github</a> ] | 
+          [ <a href="https://growwise-fintech.vercel.app" target="_blank">Demo Video</a> ]
+        </span>
+        <span class="item-date">Oct 2025</span>
+      </div>
+      <ul class="bullets">
+        <li>Built <strong>AI-powered career platform</strong> with resume builder, analyzer, roadmap generator, and cover letter tools for <strong>students</strong>.</li>
+        <li>Integrated <strong>OpenAI and Gemini APIs</strong> for intelligent resume analysis, skill gap identification, and personalized learning paths.</li>
+        <li>Developed full-stack application using <strong>Next.js, MySQL, and Clerk Authentication</strong> for secure user management.</li>
+      </ul>
+      <div class="tech-stack-line"><strong>TechStack</strong> = Next js, React js, MySQL, TailwindCSS.</div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">
+          Hostel Mess Management App (Mobile App) (150+ Live Users) &nbsp;
+          [ <a href="https://github.com/Jeevan-2275/FocusFuze" target="_blank">Github</a> ] | 
+          [ <a href="https://expo.dev" target="_blank">Expo Link</a> ] | 
+          [ <a href="https://youtube.com" target="_blank">Demo Video</a> ]
+        </span>
+        <span class="item-date">Oct 2025</span>
+      </div>
+      <ul class="bullets">
+        <li>Developed <strong>React Native app for 300+ students</strong> with menu tracking and real-time updates using <strong>Expo</strong>.</li>
+        <li>Built a <strong>smart caching mechanism with AsyncStorage</strong>, improving performance by <strong>65%</strong> and reducing API calls.</li>
+        <li>Integrated <strong>Cloudinary</strong> for optimized image hosting, reducing load times by <strong>60%</strong> and implemented <strong>scheduled push notifications</strong>.</li>
+      </ul>
+      <div class="tech-stack-line"><strong>TechStack</strong> = React Native, MySQL, Express, Nodejs.</div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">
+          AI Travel Planner (Mobile App) &nbsp;
+          [ <a href="https://github.com/Jeevan-2275/AI-Travel-Planner" target="_blank">Github</a> ] | 
+          [ <a href="https://expo.dev" target="_blank">Expo Link</a> ]
+        </span>
+        <span class="item-date">Jul 2025</span>
+      </div>
+      <ul class="bullets">
+        <li>Built <strong>AI-powered mobile app</strong> generating personalized itineraries using <strong>Gemini 2.5 API</strong> based on location, budget, and dates.</li>
+        <li>Integrated <strong>RapidAPI</strong> for maps/navigation and <strong>Unsplash API</strong> for location imagery with hotel and flight recommendations.</li>
+        <li>Implemented <strong>Firebase Auth and Firestore</strong> for secure user management and persistent travel plan storage across sessions.</li>
+      </ul>
+      <div class="tech-stack-line"><strong>TechStack</strong> = React Native, Firestore.</div>
+    </div>
+
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <ul class="skills-list">
+      <li>• <strong>Languages:</strong> C, C++, JavaScript, SQL, HTML, CSS</li>
+      <li>• <strong>Frameworks & Libraries:</strong> React.js, React Native, NextJs, Node.js, Express.js, Mongoose, Tailwind CSS.</li>
+      <li>• <strong>Databases:</strong> MongoDB, Firebase (Auth + Firestore), SQL</li>
+      <li>• <strong>Technologies & Tools:</strong> Git & GitHub (Version Control), Postman (API Testing), Vercel/Netlify (Deployment), Expo Go, Figma (UI/UX Design), Inngest (Background job processing)</li>
+      <li>• <strong>Core Competencies:</strong> RESTful APIs, Responsive Web Development, Authentication & Authorization (JWT, Firebase Auth), Clerk Authentication, API Integration, Agile/Scrum Collaboration, MCP Servers, n8n Automation</li>
+    </ul>
+  </div>
+
+  <!-- ACHIEVEMENT AND AWARDS -->
+  <div class="section">
+    <div class="section-title">Achievement and Awards</div>
+    <div class="item">
+      <div class="item-title">2nd Runner Up – TechHack 2025 (State level Hackathon)</div>
+      <div class="location-tag">📍 Rai University , Ahmedabad</div>
+      <div style="font-size: 9.5pt; margin-top: 2px;">
+        Secured the <strong>2nd Runner-Up position</strong> among state-level teams at <em>TechHack 2025</em>. Demonstrating <strong>problem-solving and technical innovation</strong> under time constraints.
+      </div>
+      <div style="font-size: 9.5pt; margin-top: 2px;">
+        Certificate : <a href="https://raiuniversity.edu" target="_blank" style="color: #0000ee; text-decoration: underline;">View Certificate</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Rai University (in collaboration with CodingGita)</span>
+        <span class="item-date">Aug 2024-28</span>
+      </div>
+      <div class="item-sub">Bachelor of Technology, Computer Science and Engineering</div>
+      <div style="font-size: 9.5pt;"><em>CGPA : 9.5 / 10</em></div>
+    </div>
+  </div>
+
+  <!-- HACKATHON PARTICIPATION -->
+  <div class="section">
+    <div class="section-title">Hackathon Participation</div>
+    <div class="hackathon-grid">
+      <div><strong>1)</strong> <a href="https://odoo.com" target="_blank">Odoo X SPIT Hackathon</a></div>
+      <div><strong>2)</strong> <a href="https://daiict.ac.in" target="_blank">InnovAItion(DA-IICT)</a></div>
+    </div>
+  </div>
+
+  <!-- OPEN SOURCE CONTRIBUTION -->
+  <div class="section" style="margin-bottom: 0;">
+    <div class="section-title">
+      Open Source Contribution &nbsp;
+      [ <a href="https://github.com/FocusFuze/FocusFuze/pull/14" target="_blank">Pull Request</a> ] | 
+      [ <a href="https://github.com/FocusFuze/FocusFuze/issues/12" target="_blank">Issue</a> ] | 
+      [ <a href="https://github.com/FocusFuze/FocusFuze" target="_blank">Repo Link</a> ]
+    </div>
+    <ul class="bullets">
+      <li>Implemented a <strong>social sharing feature</strong> with a <strong>modal-based UI</strong> for <strong>WhatsApp, Telegram, Facebook</strong>, and copy link functionality.</li>
+      <li>Designed the feature to match the <strong>existing design system</strong> while improving <strong>usability and user engagement</strong> across the product.</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

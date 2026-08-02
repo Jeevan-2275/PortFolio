@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AuroraBackground from "./components/AuroraBackground";
+import AskJeevanAI from "./components/AskJeevanAI";
 
 const Home = lazy(() => import("./pages/Home"));
 const Education = lazy(() => import("./pages/Education"));
@@ -31,6 +32,10 @@ function App() {
     damping: 30,
     restDelta: 0.001,
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handle = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
@@ -101,6 +106,7 @@ function App() {
         </Suspense>
       </AnimatePresence>
 
+      <AskJeevanAI />
       <Footer />
     </div>
   );

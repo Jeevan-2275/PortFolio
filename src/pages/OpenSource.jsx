@@ -1,7 +1,39 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { orgs, contributions } from "../data/openSource";
-import { FaCodeBranch, FaExternalLinkAlt, FaHeart, FaGithub } from "react-icons/fa";
+import { orgs, contributions, platformBadges } from "../data/openSource";
+import {
+  FaCodeBranch, FaExternalLinkAlt, FaHeart, FaGithub, FaCheckCircle,
+} from "react-icons/fa";
+import {
+  SiStackoverflow, SiLeetcode, SiGoogle, SiMicrosoft, SiAngular,
+  SiGit, SiGithub, SiLinkedin, SiArduino, SiOpenaccess,
+} from "react-icons/si";
+import { FiBookOpen, FiLayers, FiDatabase, FiFilter, FiPlusCircle, FiFileText } from "react-icons/fi";
+
+const getPlatformIcon = (name) => {
+  switch (name) {
+    case "Stack Overflow": return <SiStackoverflow />;
+    case "LeetCode": return <SiLeetcode />;
+    case "Google": return <SiGoogle />;
+    case "Microsoft": return <SiMicrosoft />;
+    case "Angular Training": return <SiAngular />;
+    case "Git": return <SiGit />;
+    case "GitHub": return <SiGithub />;
+    case "LinkedIn": return <SiLinkedin />;
+    case "Arduino UNO": return <SiArduino />;
+    case "Open Source": return <SiOpenaccess />;
+    case "Learn": return <FiBookOpen />;
+    case "Sololearn": return <FiLayers />;
+    default: return <FiBookOpen />;
+  }
+};
+
+const featureIcons = [
+  <FiFileText className="text-violet-400" />,
+  <FiFilter className="text-cyan-400" />,
+  <FiPlusCircle className="text-emerald-400" />,
+  <FiDatabase className="text-amber-400" />,
+];
 
 const fallbackPRs = [
   {
@@ -43,7 +75,7 @@ const OpenSource = () => {
       })
       .then((data) => {
         if (data.items && data.items.length > 0) {
-          setPrs(data.items); // Display all fetched PRs
+          setPrs(data.items);
           setIsLive(true);
         } else {
           setPrs(fallbackPRs);
@@ -51,7 +83,6 @@ const OpenSource = () => {
         setLoading(false);
       })
       .catch(() => {
-        // Fallback silently to mock PRs to keep UI clean
         setPrs(fallbackPRs);
         setLoading(false);
       });
@@ -68,77 +99,206 @@ const OpenSource = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="section-label mx-auto w-fit mb-5">🌐 Open-Source</div>
+          <div className="section-label mx-auto w-fit mb-5">🌐 Open-Source & Ecosystem</div>
           <h1 className="text-4xl md:text-5xl font-bold font-display text-white mb-4">
-            Ecosystem <span className="italic text-white/30">Contributions.</span>
+            Ecosystem <span className="italic text-violet-400">Contributions & Learning.</span>
           </h1>
           <p className="text-white/45 font-mono-tech text-sm max-w-xl mx-auto leading-relaxed">
-            // public_contributions_ledger.md
+            // public_contributions_and_platforms_ledger.md
           </p>
           <div className="section-divider mt-8" />
         </motion.div>
 
-        {/* Dynamic Contribution Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {contributions.map((contrib, index) => (
-            <motion.div
-              key={contrib.repo}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08, duration: 0.6 }}
-              className="neon-glass p-6 rounded-2xl flex flex-col justify-between group hover:border-white/[0.1] transition-all duration-300"
-            >
-              <div>
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-xs font-mono-tech text-violet-400 flex items-center gap-1.5 font-semibold">
-                    <FaCodeBranch />
-                    {contrib.repo}
-                  </span>
-                  <span 
-                    className="text-[10px] font-mono-tech px-2.5 py-1 rounded-md border"
-                    style={{
-                      background: "rgba(124,58,237,0.1)",
-                      borderColor: "rgba(124,58,237,0.25)",
-                      color: "#a78bfa"
-                    }}
-                  >
-                    {contrib.impact}
-                  </span>
-                </div>
-                
-                <p className="text-sm text-white/45 leading-relaxed mb-6">
-                  {contrib.description}
-                </p>
-              </div>
+        {/* ── 1. PLATFORMS & LEARNING BADGES GRID ────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="neon-glass p-6 md:p-8 rounded-3xl mb-16 border border-white/[0.08]"
+        >
+          <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+            <h2 className="text-lg font-bold font-display text-white flex items-center gap-2">
+              <span className="text-violet-400">✦</span> Learning & Open-Source Badges
+            </h2>
+            <span className="text-xs font-mono-tech text-white/35">12 Platforms Active</span>
+          </div>
 
-              <div className="flex justify-between items-center border-t border-white/[0.05] pt-4 mt-auto">
-                <span className="text-xs text-white/30 font-mono-tech">
-                  commits: <span className="text-white/70 font-semibold">{contrib.commits}</span>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5">
+            {platformBadges.map((badge, idx) => (
+              <motion.a
+                key={badge.name}
+                href={badge.link}
+                target={badge.link !== "#" ? "_blank" : "_self"}
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border transition-all duration-300 text-center select-none"
+                style={{
+                  background: "rgba(255,255,255,0.02)",
+                  borderColor: "rgba(255,255,255,0.07)",
+                  backdropFilter: "blur(12px)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `${badge.color}60`;
+                  e.currentTarget.style.boxShadow = `0 0 20px -5px ${badge.color}40`;
+                  e.currentTarget.style.background = `linear-gradient(135deg, ${badge.color}15, transparent)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.background = "rgba(255,255,255,0.02)";
+                }}
+              >
+                <span className="text-base flex-shrink-0" style={{ color: badge.color }}>
+                  {getPlatformIcon(badge.name)}
                 </span>
-                
+                <span className="text-xs font-mono-tech font-semibold text-white/80 tracking-tight whitespace-nowrap">
+                  {badge.name}
+                </span>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ── 1.5 GITHUB ACTIVITY HEATMAP ────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="neon-glass p-6 md:p-8 rounded-3xl mb-16 border border-white/10"
+        >
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xs font-mono-tech text-emerald-400 font-semibold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> 52-Week Commit Activity
+                </span>
+              </div>
+              <h2 className="text-xl font-bold font-display text-white">
+                GitHub Commit Graph &amp; Consistency
+              </h2>
+            </div>
+            <div className="flex items-center gap-2 text-xs font-mono-tech text-white/50 bg-white/[0.04] px-3.5 py-1.5 rounded-xl border border-white/10">
+              <FaGithub className="text-violet-400" />
+              <span>450+ Commits in 2025-2026</span>
+            </div>
+          </div>
+
+          {/* Live GitHub Contribution Chart SVG */}
+          <div className="w-full overflow-x-auto pb-2 scrollbar-none">
+            <div className="min-w-[720px] p-6 bg-slate-950/80 rounded-2xl border border-white/10 flex flex-col items-center gap-4">
+              <img
+                src="https://ghchart.rshah.org/10b981/Jeevan-2275"
+                alt="Jeevan Kadam's Live GitHub Contribution Chart"
+                className="w-full h-auto filter drop-shadow-[0_0_12px_rgba(16,185,129,0.35)] min-h-[110px]"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://github-readme-activity-graph.vercel.app/graph?username=Jeevan-2275&theme=github-dark";
+                }}
+              />
+              <div className="flex items-center justify-between w-full text-[11px] font-mono-tech text-white/50 pt-3 border-t border-white/10">
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Live Syncing with github.com/Jeevan-2275
+                </span>
                 <a
-                  href={contrib.link}
+                  href="https://github.com/Jeevan-2275"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-mono-tech text-violet-400 hover:text-violet-300 flex items-center gap-1.5 transition"
+                  className="text-violet-400 hover:text-violet-300 underline font-semibold flex items-center gap-1 transition-colors"
                 >
-                  view_upstream()
-                  <FaExternalLinkAlt className="text-[10px]" />
+                  View Live Profile →
                 </a>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </div>
+        </motion.div>
 
-        {/* ── LIVE PULL REQUEST ACTIVITY FEED ────────────────── */}
+        {/* ── 2. MERN PROJECT CONTRIBUTIONS SECTION ────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="neon-glass p-6 md:p-8 rounded-3xl mb-16 border border-violet-500/30 relative overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, rgba(13,13,26,0.9), rgba(124,58,237,0.08))",
+          }}
+        >
+          {/* Ambient background glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-violet-600/10 rounded-full filter blur-3xl pointer-events-none" />
+
+          <div className="flex justify-between items-start mb-6 flex-wrap gap-3">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="badge-available text-[10px] px-2.5 py-0.5">
+                  MERN Project Contribution
+                </span>
+                <span className="text-xs font-mono-tech text-violet-400 font-semibold flex items-center gap-1">
+                  <FaCodeBranch /> FocusFuze
+                </span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold font-display text-white">
+                MERN Project Contributions
+              </h2>
+            </div>
+
+            <a
+              href="https://github.com/codinggita/focus_fuze"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-xs px-4 py-2 rounded-xl flex items-center gap-1.5"
+            >
+              View Repository <FaExternalLinkAlt size={10} />
+            </a>
+          </div>
+
+          <p className="text-sm text-slate-300 leading-relaxed mb-6 font-sans">
+            Contributed to the <strong className="text-white">FocusFuze MERN Stack project</strong> with core feature implementations including:
+          </p>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            {contributions[0].features.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.02, x: 4 }}
+                className="flex items-start gap-3 p-4 rounded-xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-md"
+              >
+                <div className="p-2 rounded-lg bg-violet-500/10 border border-violet-500/20 text-base flex-shrink-0 mt-0.5">
+                  {featureIcons[idx % featureIcons.length]}
+                </div>
+                <div>
+                  <h4 className="text-xs font-mono-tech font-bold text-white mb-0.5 flex items-center gap-1.5">
+                    <FaCheckCircle className="text-emerald-400 text-[10px]" />
+                    {feature.split(" (")[0]}
+                  </h4>
+                  {feature.includes("(") && (
+                    <p className="text-[11px] text-white/50 font-sans">
+                      {feature.split(" (")[1].replace(")", "")}
+                    </p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex justify-between items-center border-t border-white/10 pt-4 text-xs font-mono-tech text-white/40">
+            <span>Impact: <strong className="text-violet-300">UX, Search & Database Core</strong></span>
+            <span>Commits Merged: <strong className="text-emerald-400">6 Commits</strong></span>
+          </div>
+        </motion.div>
+
+        {/* ── 3. LIVE PULL REQUEST ACTIVITY FEED ────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="neon-glass p-6 md:p-8 rounded-2xl mb-16"
         >
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-8 flex-wrap gap-2">
             <h3 className="text-lg font-bold font-display text-white flex items-center gap-2.5">
               <FaGithub className="text-xl text-white/70" />
               Live Pull Request Activity Feed

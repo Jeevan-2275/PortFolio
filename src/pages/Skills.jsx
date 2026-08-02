@@ -8,7 +8,7 @@ import {
   SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiMysql,
   SiRedis, SiFirebase, SiGithub, SiPostman, SiVercel, SiNetlify,
   SiDocker, SiAmazon, SiFigma, SiOpenai, SiPython, SiGraphql,
-  SiMui, SiGit, SiRender,
+  SiMui, SiGit, SiRender, SiAngular, SiJenkins, SiDjango,
 } from "react-icons/si";
 import { FiShield, FiServer, FiCpu, FiBox, FiLayers, FiCode } from "react-icons/fi";
 
@@ -34,6 +34,7 @@ const groups = [
     skills: [
       { name: "React.js",     icon: <SiReact />,       color: "#61DAFB" },
       { name: "Next.js",      icon: <SiNextdotjs />,   color: "#e2e8f0" },
+      { name: "Angular",      icon: <SiAngular />,     color: "#DD0031" },
       { name: "React Native", icon: <SiExpo />,        color: "#8b8b8b" },
       { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#38BDF8" },
       { name: "Material UI",  icon: <SiMui />,         color: "#007FFF" },
@@ -49,6 +50,7 @@ const groups = [
     skills: [
       { name: "Node.js",    icon: <SiNodedotjs />,  color: "#339933" },
       { name: "Express.js", icon: <SiExpress />,    color: "#e2e8f0" },
+      { name: "Django",     icon: <SiDjango />,     color: "#092E20" },
       { name: "MongoDB",    icon: <SiMongodb />,    color: "#47A248" },
       { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791" },
       { name: "MySQL",      icon: <SiMysql />,      color: "#4479A1" },
@@ -62,6 +64,7 @@ const groups = [
     span: "md:col-span-1",
     skills: [
       { name: "OpenAI API",    icon: <SiOpenai />,  color: "#ffffff" },
+      { name: "LangChain",     icon: <FiCpu />,     color: "#38BDF8" },
       { name: "Agentic AI",    icon: <FiCpu />,     color: "#db2777" },
       { name: "REST APIs",     icon: <FiServer />,  color: "#f59e0b" },
       { name: "Microservices", icon: <FiBox />,     color: "#06b6d4" },
@@ -76,6 +79,7 @@ const groups = [
       { name: "Git",     icon: <SiGit />,     color: "#F05032" },
       { name: "GitHub",  icon: <SiGithub />,  color: "#e2e8f0" },
       { name: "Docker",  icon: <SiDocker />,  color: "#2496ED" },
+      { name: "Jenkins", icon: <SiJenkins />, color: "#D24939" },
       { name: "Postman", icon: <SiPostman />, color: "#FF6C37" },
       { name: "Vercel",  icon: <SiVercel />,  color: "#e2e8f0" },
       { name: "Netlify", icon: <SiNetlify />, color: "#00C7B7" },
@@ -87,7 +91,7 @@ const groups = [
 ];
 
 const topStats = [
-  { value: "30+", label: "Technologies" },
+  { value: "35+", label: "Technologies" },
   { value: "5", label: "Core Domains" },
   { value: "3+", label: "Yrs Learning" },
   { value: "20+", label: "GitHub Repos" },

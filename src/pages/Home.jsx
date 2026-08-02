@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaArrowRight, FaDownload } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaArrowRight, FaDownload, FaYoutube } from "react-icons/fa";
 import {
   SiReact, SiNodedotjs, SiMongodb, SiDocker, SiNextdotjs,
   SiTypescript, SiTailwindcss, SiRedux, SiPostgresql, SiAmazon,
-  SiVercel, SiFigma, SiGraphql, SiPython,
+  SiVercel, SiFigma, SiGraphql, SiPython, SiLeetcode,
 } from "react-icons/si";
 import { FiZap, FiLayers, FiCpu, FiArrowUpRight } from "react-icons/fi";
 import profileImage from "../assets/profile-image.png";
@@ -243,9 +243,10 @@ const Home = () => {
                   </motion.button>
                 </Link>
                 <a
-                  href="https://drive.google.com/file/d/1Q2sb9s8T9MS5uU-YkJ9eH7iBXxVnpOD9/view?usp=sharing"
+                  href="/Jeevan_Kadam_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  download="Jeevan_Kadam_Resume.pdf"
                 >
                   <motion.button
                     whileHover={{ scale: 1.04, y: -2 }}
@@ -263,6 +264,8 @@ const Home = () => {
                 {[
                   { icon: <FaGithub />, href: "https://github.com/Jeevan-2275", label: "GitHub" },
                   { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/jeevan-kadam-730b87327", label: "LinkedIn" },
+                  { icon: <SiLeetcode />, href: "https://leetcode.com/u/Jeevan-2275/", label: "LeetCode" },
+                  { icon: <FaYoutube />, href: "https://youtube.com/@jeevankadam-xc7gs?si=Gqi-QvaVpWsRqtA2", label: "YouTube" },
                 ].map((s) => (
                   <motion.a
                     key={s.label}
