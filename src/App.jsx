@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AuroraBackground from "./components/AuroraBackground";
-import AskJeevanAI from "./components/AskJeevanAI";
+import JKLogoLoader from "./components/JKLogoLoader";
 
 const Home = lazy(() => import("./pages/Home"));
 const Education = lazy(() => import("./pages/Education"));
@@ -83,16 +83,7 @@ function App() {
       <Navbar />
 
       <AnimatePresence mode="wait">
-        <Suspense
-          fallback={
-            <div className="min-h-screen flex flex-col items-center justify-center gap-5 font-mono-tech">
-              <div
-                className="w-10 h-10 rounded-full border-2 border-violet-500/30 border-t-violet-500 animate-spin"
-              />
-              <span className="text-sm text-white/30 animate-pulse">Loading...</span>
-            </div>
-          }
-        >
+        <Suspense fallback={<JKLogoLoader />}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<motion.div {...pageVariants} initial="initial" animate="animate" exit="exit"><Home /></motion.div>} />
             <Route path="/education" element={<motion.div {...pageVariants} initial="initial" animate="animate" exit="exit"><Education /></motion.div>} />
