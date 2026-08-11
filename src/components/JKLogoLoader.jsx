@@ -5,7 +5,7 @@ const JKLogoLoader = ({ fullScreen = true }) => {
   return (
     <div
       className={`${
-        fullScreen ? "fixed inset-0 z-[100]" : "w-full py-24"
+        fullScreen ? "min-h-screen w-full" : "w-full py-24"
       } flex flex-col items-center justify-center bg-[#06060f] select-none`}
     >
       <div className="relative flex flex-col items-center gap-6">
