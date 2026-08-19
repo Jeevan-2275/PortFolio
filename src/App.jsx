@@ -26,6 +26,7 @@ const pageVariants = {
 function App() {
   const location = useLocation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isLoading, setIsLoading] = useState(true);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -33,6 +34,14 @@ function App() {
     damping: 30,
     restDelta: 0.001,
   });
+
+  useEffect(() => {
+    // Ensure initial futuristic loader displays for minimum 5 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,6 +58,18 @@ function App() {
       className="relative min-h-screen text-slate-100 selection:bg-violet-500/30 selection:text-violet-200"
       style={{ backgroundColor: "var(--bg-base)" }}
     >
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            key="initial-loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.04, transition: { duration: 0.6, ease: "easeInOut" } }}
+            className="fixed inset-0 z-[100]"
+          >
+            <JKLogoLoader fullScreen={true} />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <Helmet>
         <title>Jeevan Kadam | Full-Stack Engineer & AI Systems Builder</title>
         <meta

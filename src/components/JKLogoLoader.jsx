@@ -14,21 +14,21 @@ const JKLogoLoader = ({ fullScreen = true }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Cycle terminal log messages
+    // Cycle terminal log messages (1 second per log message across 5s)
     const logInterval = setInterval(() => {
       setLogIndex((prev) => (prev + 1) % terminalLogs.length);
-    }, 1200);
+    }, 1000);
 
-    // Progress counter animation
+    // Progress counter animation reaching 100% at ~4.5 seconds
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + Math.floor(Math.random() * 15) + 5;
+        return prev + 1;
       });
-    }, 150);
+    }, 45);
 
     return () => {
       clearInterval(logInterval);
