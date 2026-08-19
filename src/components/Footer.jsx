@@ -38,14 +38,23 @@ const Footer = () => (
         <div className="flex flex-col gap-5">
           <Link to="/" className="flex items-center gap-3 w-fit group">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm font-mono-tech"
-              style={{ background: "linear-gradient(135deg, #7c3aed, #db2777)" }}
+              className="relative w-10 h-10 rounded-xl p-[1px] shadow-[0_0_20px_rgba(124,58,237,0.4)]"
+              style={{ background: "linear-gradient(135deg, #7c3aed, #06b6d4)" }}
             >
-              JK
+              <div className="w-full h-full bg-[#0a0a16] rounded-[11px] flex items-center justify-center border border-white/10">
+                <span className="text-sm font-extrabold font-mono-tech tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-violet-200 to-cyan-300">
+                  JK
+                </span>
+              </div>
             </div>
-            <span className="text-lg font-bold font-display text-white group-hover:gradient-text-vivid transition-all">
-              Jeevan Kadam
-            </span>
+            <div className="flex flex-col">
+              <span className="text-lg font-bold font-display text-white group-hover:text-violet-300 transition-colors leading-tight">
+                Jeevan Kadam
+              </span>
+              <span className="text-[10px] font-mono-tech text-cyan-400/80 tracking-widest uppercase">
+                Full-Stack &amp; AI Systems
+              </span>
+            </div>
           </Link>
           <p className="text-sm text-white/40 leading-relaxed max-w-xs">
             Full-Stack Engineer & AI Integration Specialist building high-performance digital systems.

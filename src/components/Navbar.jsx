@@ -44,19 +44,28 @@ const Navbar = () => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-xl group"
+            className="mr-2 flex items-center gap-2.5 px-3 py-1.5 rounded-xl group"
           >
             <motion.div
-              whileHover={{ rotate: 180, scale: 1.1 }}
-              transition={{ duration: 0.4 }}
-              className="w-7 h-7 rounded-lg flex items-center justify-center text-white font-bold text-xs font-mono-tech"
-              style={{ background: "linear-gradient(135deg, #7c3aed, #db2777)" }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative w-8 h-8 rounded-xl p-[1px] shadow-[0_0_15px_rgba(124,58,237,0.4)]"
+              style={{ background: "linear-gradient(135deg, #7c3aed, #06b6d4)" }}
             >
-              JK
+              <div className="w-full h-full bg-[#0a0a16] rounded-[11px] flex items-center justify-center border border-white/10">
+                <span className="text-[11px] font-extrabold font-mono-tech tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-violet-200 to-cyan-300">
+                  JK
+                </span>
+              </div>
             </motion.div>
-            <span className="text-sm font-semibold text-white/80 group-hover:text-white font-display transition-colors">
-              Jeevan
-            </span>
+            <div className="flex flex-col">
+              <span className="text-sm font-bold text-white group-hover:text-violet-300 font-display transition-colors leading-tight">
+                Jeevan Kadam
+              </span>
+              <span className="text-[9px] font-mono-tech text-cyan-400/80 tracking-widest uppercase">
+                Systems Architect
+              </span>
+            </div>
           </NavLink>
 
           {/* Divider */}
@@ -125,14 +134,21 @@ const Navbar = () => {
         }`}
       >
         <div className="flex items-center justify-between px-5 py-4">
-          <NavLink to="/" className="flex items-center gap-2">
+          <NavLink to="/" className="flex items-center gap-2.5">
             <div
-              className="w-8 h-8 rounded-xl flex items-center justify-center text-white font-bold text-xs font-mono-tech"
-              style={{ background: "linear-gradient(135deg, #7c3aed, #db2777)" }}
+              className="relative w-8 h-8 rounded-xl p-[1px] shadow-[0_0_15px_rgba(124,58,237,0.4)]"
+              style={{ background: "linear-gradient(135deg, #7c3aed, #06b6d4)" }}
             >
-              JK
+              <div className="w-full h-full bg-[#0a0a16] rounded-[11px] flex items-center justify-center border border-white/10">
+                <span className="text-[11px] font-extrabold font-mono-tech tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-violet-200 to-cyan-300">
+                  JK
+                </span>
+              </div>
             </div>
-            <span className="font-semibold text-white font-display">Jeevan</span>
+            <div className="flex flex-col">
+              <span className="font-bold text-white font-display text-sm leading-tight">Jeevan Kadam</span>
+              <span className="text-[9px] font-mono-tech text-cyan-400/80 tracking-widest uppercase">Engineer</span>
+            </div>
           </NavLink>
 
           <button

@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AuroraBackground from "./components/AuroraBackground";
 import JKLogoLoader from "./components/JKLogoLoader";
+import AskJeevanAI from "./components/AskJeevanAI";
 
 const Home = lazy(() => import("./pages/Home"));
 const Education = lazy(() => import("./pages/Education"));
